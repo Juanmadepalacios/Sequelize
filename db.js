@@ -1,12 +1,14 @@
 const Sequelize = require("sequelize");
 
 const FilmModel = require("./models/films");
+const UserModel = require("./models/users");
 
 const sequelize = new Sequelize(
   "mysql://root:krea2019@localhost:3306/Sequalize"
 );
 
 const Film = FilmModel(sequelize, Sequelize);
+const User = UserModel(sequelize, Sequelize);
 
 sequelize.sync({ force: false }).then(() => {
   console.log("Tablas sincronizadas");
@@ -14,4 +16,5 @@ sequelize.sync({ force: false }).then(() => {
 
 module.exports = {
   Film,
+  User,
 };
